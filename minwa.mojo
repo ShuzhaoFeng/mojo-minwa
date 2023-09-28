@@ -1,3 +1,10 @@
+fn fwrite(
+    _ptr: Pointer[UInt8], _size: UInt64, _nitems: UInt64, _stream: Pointer[FILE]
+) -> UInt64:
+    return external_call[
+        "fwrite", UInt64, Pointer[UInt8], UInt64, UInt64, Pointer[FILE]
+    ](_ptr, _size, _nitems, _stream)
+
 # high-level functions for write and append
 
 fn writefile(x: String, fname: String) -> UInt64:
@@ -78,10 +85,3 @@ fn fopen(_filename: Pointer[UInt8], _mode: Pointer[UInt8]) -> Pointer[FILE]:
 
 fn fclose(arg: Pointer[FILE]) -> Int32:
     return external_call["fclose", Int32](arg)
-
-fn fwrite(
-    _ptr: Pointer[UInt8], _size: UInt64, _nitems: UInt64, _stream: Pointer[FILE]
-) -> UInt64:
-    return external_call[
-        "fwrite", UInt64, Pointer[UInt8], UInt64, UInt64, Pointer[FILE]
-    ](_ptr, _size, _nitems, _stream)
