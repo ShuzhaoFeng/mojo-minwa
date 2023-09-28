@@ -15,7 +15,7 @@ fn appendfile(x: String, fname: String) -> UInt64:
     let f = File(fname, "a")
     return fwrite(to_char_ptr(x), 1, len(x), f.handle)
 
-# The code below is selected and extracted from Luka's repo at: https://github.com/lsh/shims.
+# The code below is selected and extracted from Lukas Hermann's repo at: https://github.com/lsh/shims.
 
 # MIT License
 # 
